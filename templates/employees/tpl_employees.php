@@ -154,13 +154,6 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
               </td>
             </tr>
             <tr>
-              <td>ID:</td>
-              <td class= "inputContainer">
-                <span>{{employeeId}}</span>
-                <input type="hidden" name="employeeId" data-type=text data-inputmask="" value="{{employeeId}}">
-              </td>
-            </tr>
-            <tr>
               <td>Race:</td>
               <td class= "inputContainer">
                 <span>{{employeeRace}}</span>

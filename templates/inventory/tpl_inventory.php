@@ -90,13 +90,6 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
           </thead>
           <tbody>
           <tr>
-            <td>Item ID:</td>
-            <td class= "inputContainer">
-              <span>{{itemId}}</span>
-              <input type="hidden" name="itemId" data-type="text" value="{{itemId}}">
-            </td>
-          </tr>
-          <tr>
             <td>Inventory Type ID:</td>
             <td class= "inputContainer">
               <span>{{inventoryTypeId}}</span>
