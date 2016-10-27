@@ -28,9 +28,6 @@ foreach($list as $key => $employeeIdData)
   $employeeData['emailPersonal'] = $Employee->emailPersonal;
 
   $results[] = $employeeData;
-
-
-
 }
 
 

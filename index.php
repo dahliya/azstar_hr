@@ -69,7 +69,7 @@ else if ($_SERVER['REQUEST_METHOD'] == 'POST' && @!empty($_POST['loginName']) &&
   else
   {
     $User = $_SESSION['User'];
-    require 'templates/tpl_dashboard.php';
+    require 'templates/employees/tpl_employees.php';
   }
 }
 else

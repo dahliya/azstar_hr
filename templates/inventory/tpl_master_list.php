@@ -6,7 +6,7 @@ $results = array();
 foreach($list as $key => $itemData)
 {
   $itemId = $itemData['itemId'];
-  $Inventory = new Inventory($itemId);
+  $Inventory = new inventoryItem($itemId);
 
   $itemData = array();
   $itemData['itemId'] = $Inventory->itemId;
@@ -22,4 +22,4 @@ foreach($list as $key => $itemData)
 }
 
 
-var_dump($itemData);
+echo json_encode($results);

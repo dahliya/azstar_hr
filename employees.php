@@ -14,7 +14,7 @@ if(isset($_GET['action']))
     #
     case 'update':
       $update = $PageEmployees->update();
-      require 'templates/tpl_employee_profile.php';
+      require 'templates/';
     break;
     case 'insert_new_employee':
       $Employee = new Employee();
@@ -25,4 +25,5 @@ if(isset($_GET['action']))
   session_write_close();
   exit();
 }
-require 'templates/employees/tpl_employees.php'; //sdfwefw
+require 'templates/employees/tpl_employees.php';
+
