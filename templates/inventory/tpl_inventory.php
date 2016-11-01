@@ -13,6 +13,7 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel ="stylesheet" href="css/styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script type="text/javascript" src="javascript/jquery.maskedinput.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="javascript/jquery-ui.js"></script>
   <script type="text/javascript" src="javascript/handlebars-v4.0.5.js"></script>

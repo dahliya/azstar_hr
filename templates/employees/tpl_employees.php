@@ -13,6 +13,7 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel ="stylesheet" href="css/styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script type="text/javascript" src="javascript/jquery.maskedinput.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="javascript/jquery-ui.js"></script>
   <script type="text/javascript" src="javascript/handlebars-v4.0.5.js"></script>
@@ -37,7 +38,6 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
         <li class = "" id="complaints"><a href="index.php?p=employees&action=get_list">Complaints</a></li>
         <li class = "" id="violations"><a href="index.php?p=employees&action=get_list">Violations</a></li>
         <li class = "" id="new_employee" data-toggle="modal" data-target="#employeeModal"><a>Add new employee</a></li>
-
       </ul>
     </nav>
   </div>
@@ -102,7 +102,7 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
               <td>Personal Cell Phone:</td>
               <td class= "inputContainer">
                 <span>{{cellphonePersonal}}</span>
-                <input type="hidden" name="cellphonePersonal" data-type="" data-inputmask="\'mask': '1-999-999-9999'" value="{{cellphonePersonal}}">
+                <input class="date" type="hidden" name="cellphonePersonal" data-type="" value="{{cellphonePersonal}}">
               </td>
             </tr>
             <tr>
@@ -240,10 +240,9 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
                 <div class="col-sm-3">
                   <input class="form-control" name="DOB" type="text" placeholder="mm/dd/yyyy">
                 </div>
-
                 <label class="col-sm-2 control-label" style="text-align:left">SSN:</label>
                 <div class="col-sm-4">
-                  <input class="form-control" name="SSN" type="text">
+                  <input class="form-control" name="SSN" type="text" data-inputmask="'mask': '999-99-9999'" required>
                 </div>
               </div>
               <div class="form-group">

@@ -44,7 +44,7 @@ if (isset($_SESSION['User']) && $_SESSION['User']->get_userId() && is_numeric($_
     case 'violations':
       require 'violations.php';
       break;
-    // need to be editted
+    // need to be edited
     case 'pic_one':
       require 'templates/tpl_document_viewer.php';
       break;
