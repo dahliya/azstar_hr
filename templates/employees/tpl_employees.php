@@ -81,7 +81,7 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
       <li><a data-toggle="tab" href="#tab-inventory">Inventory</a></li>
     </ul>
 
-    <div class="tab-content"> <!-- employee profile-->
+    <div class="tab-content"> <!-- employee profile updatable-->
       <div id="tab-profile" class="tab-pane fade in active">
         <form id="form-generalTab-form" action="index.php?p=employees&action=update" method="post" data-employeeId="{{employeeId}}">
           <table id="table-general-table" class="table table-hover">
@@ -94,7 +94,7 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
               <td>GCExpire:</td>
               <td class= "inputContainer">
                 <span>{{GCExpire}}</span>
-                <input type="hidden" name="GCExpire" data-type="date" min="<?php echo date('Y-m-d');?>" data-inputmask="" value="{{GCExpire}}">
+                <input class="date" type="hidden" name="GCExpire" data-type="date" min="<?php echo date('Y-m-d');?>" value="{{GCExpire}}">
                 <!--months and days do not change, no drop out-->
               </td>
             </tr>
@@ -102,14 +102,14 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
               <td>Personal Cell Phone:</td>
               <td class= "inputContainer">
                 <span>{{cellphonePersonal}}</span>
-                <input class="date" type="hidden" name="cellphonePersonal" data-type="" value="{{cellphonePersonal}}">
+                <input class="phone" type="hidden" name="cellphonePersonal" data-type="" value="{{cellphonePersonal}}">
               </td>
             </tr>
             <tr>
               <td>Work Phone Number:</td>
               <td class= "inputContainer">
                 <span>{{cellphoneWork}}</span>
-                <input type="hidden" name="cellphoneWork" data-type="" data-inputmask="" value="{{cellphoneWork}}"></td>
+                <input  class="phone" type="hidden" name="cellphoneWork" data-type="" data-inputmask="" value="{{cellphoneWork}}"></td>
             </tr>
             <tr>
               <td>Address:</td>
@@ -136,14 +136,14 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
               <td>Zip Code:</td>
               <td class= "inputContainer">
                 <span>{{employeeZip}}</span>
-                <input type="hidden" name="employeeZip" data-type="text" maxlength="5" pattern="[0-9]{5}" value="{{employeeZip}}">
+                <input class="zipCode" type="hidden" name="employeeZip" data-type="text" value="{{employeeZip}}">
               </td>
             </tr>
             <tr>
               <td>Birth Date:</td>
               <td class= "inputContainer">
                 <span>{{employeeDOB}}</span>
-                <input type="hidden" name="employeeDOB" data-type="date" data-inputmask="" value="{{employeeDOB}}">
+                <input class="date" type="hidden" name="employeeDOB" data-type="date" value="{{employeeDOB}}">
               </td>
             </tr>
             <tr>
@@ -164,28 +164,28 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
               <td>SSN:</td>
               <td class= "inputContainer">
                 <span>{{employeeSSN}}</span>
-                <input type="hidden" name="employeeSSN" data-type="text" data-inputmask="\'mask': '9999999999'\" value="{{employeeSSN}}">
+                <input  class="ssn" type="hidden" name="employeeSSN" data-type="text" value="{{employeeSSN}}">
               </td>
             </tr>
             <tr>
               <td>Phone Number:</td>
               <td class= "inputContainer">
                 <span>{{phoneDirect}}</span>
-                <input type="hidden" name="phoneDirect" data-type="text" data-inputmask="" value="{{phoneDirect}}">
+                <input class="phone" type="hidden" name="phoneDirect" data-type="text" value="{{phoneDirect}}">
               </td>
             </tr>
             <tr>
               <td>Phone Ext:</td>
               <td class= "inputContainer">
                 <span>{{phoneExt}}</span>
-                <input type="hidden" name="phoneExt" data-type="text" data-inputmask="" value="{{phoneExt}}">
+                <input type="hidden" name="phoneExt" data-type="text" value="{{phoneExt}}">
               </td>
             </tr>
             <tr>
               <td>Email:</td>
               <td class= "inputContainer">
                 <span>{{emailPersonal}}</span>
-                <input type="hidden" name="emailPersonal" data-type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" data-inputmask="" value="{{emailPersonal}}">
+                <input type="hidden" name="emailPersonal" data-type="email" value="{{emailPersonal}}">
               </td>
             </tr>
             </tbody>
@@ -238,11 +238,11 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
               <div class="form-group">
                 <label class="col-sm-3 control-label" style="text-align:left">Birth Date:</label>
                 <div class="col-sm-3">
-                  <input class="form-control" name="DOB" type="text" placeholder="mm/dd/yyyy">
+                  <input class="date form-control" name="DOB" type="text">
                 </div>
                 <label class="col-sm-2 control-label" style="text-align:left">SSN:</label>
                 <div class="col-sm-4">
-                  <input class="form-control" name="SSN" type="text" data-inputmask="'mask': '999-99-9999'" required>
+                  <input class="ssn form-control" name="SSN" type="text" required>
                 </div>
               </div>
               <div class="form-group">
@@ -268,19 +268,19 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
               <div class="form-group">
                 <label class="col-sm-4 control-label" style="text-align:left">Personal cell Phone:</label>
                 <div class="col-sm-8">
-                  <input class="form-control" name="cellPhone" type="text">
+                  <input class="phone form-control" name="cellPhone" type="text">
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-4 control-label" style="text-align:left">Work Phone Number:</label>
                 <div class="col-sm-8">
-                  <input class="form-control" name="workPhone" type="text">
+                  <input class="phone form-control" name="workPhone" type="text">
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-3 control-label" style="text-align:left">Phone Number:</label>
                 <div class="col-sm-4">
-                  <input class="form-control" name="phoneNumber" type="text">
+                  <input class="phone form-control" name="phoneNumber" type="text">
                 </div>
                 <label class="col-sm-3 control-label" style="text-align:left">Phone Ext:</label>
                 <div class="col-sm-2">
@@ -306,17 +306,17 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
                 </div>
                 <label class="col-sm-2 control-label" style="text-align:left">Zip Code:</label>
                 <div class="col-sm-3">
-                  <input class="form-control" name="zip" type="text">
+                  <input class="zipCode form-control" name="zip" type="text">
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label" style="text-align:left">GCExpire:</label>
                 <div class="col-sm-4">
-                  <input class="form-control" name="GCExpire" type="date">
+                  <input class="date form-control" name="GCExpire" type="date">
                 </div>
                 <label class="col-sm-2 control-label" style="text-align:left">DLExpire:</label>
                 <div class="col-sm-4">
-                  <input class="form-control" name="DLExpire" type="date">
+                  <input class="date form-control" name="DLExpire" type="date">
                 </div>
               </div>
               <div class="modal-footer">
@@ -337,9 +337,11 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
 <script type="text/javascript">
 
   var employeeId;
+  var profile;
   var newEmployeeForm = $("#form-new-employee");
   var body = $("body");
   var alert = $("#alert");
+
 
   // list of employees
   $.ajax({
@@ -367,6 +369,12 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
               var profile = $("#container-profile").html(table_result);
             }
           });
+        body.ready(function () {
+          $(".ssn").mask("999-99-9999");
+          $(".date").mask("99/99/9999"); //ask about dates` jumping and changing
+          $(".phone").mask("(999) 999-9999");
+          $(".zipCode").mask("99999");
+        });
         });
       }//end of profile template
     }
@@ -395,6 +403,14 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
   body.on('click', 'input', function(e){
     e.stopPropagation();
   });
+  //input mask for new employee
+  body.ready(function(){
+    $(".ssn").mask("999-99-9999");
+    $(".date").mask("99/99/9999"); //ask about dates` jumping and changing
+    $(".phone").mask("(999) 999-9999");
+    $(".zipCode").mask("99999");
+  });
+
   //submit a new employee
   newEmployeeForm.ajaxForm({
     dataType: 'JSON',
