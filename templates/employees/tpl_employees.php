@@ -102,34 +102,34 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
               <td>Personal Cell Phone:</td>
               <td class= "inputContainer">
                 <span>{{cellphonePersonal}}</span>
-                <input class="phone" type="hidden" name="cellphonePersonal" data-type="" value="{{cellphonePersonal}}">
+                <input class="phone" type="hidden" name="cellphonePersonal" value="{{cellphonePersonal}}">
               </td>
             </tr>
             <tr>
               <td>Work Phone Number:</td>
               <td class= "inputContainer">
                 <span>{{cellphoneWork}}</span>
-                <input  class="phone" type="hidden" name="cellphoneWork" data-type="" data-inputmask="" value="{{cellphoneWork}}"></td>
+                <input  class="phone" type="hidden" name="cellphoneWork" value="{{cellphoneWork}}"></td>
             </tr>
             <tr>
               <td>Address:</td>
               <td class= "inputContainer">
                 <span>{{employeeStreet}}</span>
-                <input type="hidden" name="employeeStreet" data-type="text" data-inputmask="" value="{{employeeStreet}}">
+                <input type="hidden" name="employeeStreet" data-type="text" value="{{employeeStreet}}">
               </td>
             </tr>
             <tr>
               <td>City:</td>
               <td class= "inputContainer">
                 <span>{{employeeCity}}</span>
-                <input type="hidden" name="employeeCity" data-type="text" data-inputmask="" value="{{employeeCity}}">
+                <input type="hidden" name="employeeCity" data-type="text" value="{{employeeCity}}">
               </td>
             </tr>
             <tr>
               <td>State:</td>
               <td class= "inputContainer">
                 <span>{{employeeState}}</span>
-                <input type="hidden" name="employeeState" data-type="" data-inputmask="" value="{{employeeState}}">
+                <input type="hidden" name="employeeState" value="{{employeeState}}">
               </td>
             </tr>
             <tr>
@@ -143,21 +143,21 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
               <td>Birth Date:</td>
               <td class= "inputContainer">
                 <span>{{employeeDOB}}</span>
-                <input class="date" type="hidden" name="employeeDOB" data-type="date" value="{{employeeDOB}}">
+                <input type="hidden" name="employeeDOB" data-type="date" value="{{employeeDOB}}">
               </td>
             </tr>
             <tr>
               <td>Gender:</td>
               <td class= "inputContainer">
                 <span>{{employeeGender}}</span>
-                <input type="hidden" name="employeeGender" data-type="text" data-inputmask="" value="{{employeeGender}}">
+                <input type="hidden" name="employeeGender" data-type="text" value="{{employeeGender}}">
               </td>
             </tr>
             <tr>
               <td>Race:</td>
               <td class= "inputContainer">
                 <span>{{employeeRace}}</span>
-                <input type="hidden" name="employeeRace" data-type="text" data-inputmask="" value="{{employeeRace}}">
+                <input type="hidden" name="employeeRace" data-type="text" value="{{employeeRace}}">
               </td>
             </tr>
             <tr>
@@ -312,11 +312,11 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
               <div class="form-group">
                 <label class="col-sm-2 control-label" style="text-align:left">GCExpire:</label>
                 <div class="col-sm-4">
-                  <input class="date form-control" name="GCExpire" type="date">
+                  <input class="form-control" name="GCExpire" type="date">
                 </div>
                 <label class="col-sm-2 control-label" style="text-align:left">DLExpire:</label>
                 <div class="col-sm-4">
-                  <input class="date form-control" name="DLExpire" type="date">
+                  <input class="form-control" name="DLExpire" type="date">
                 </div>
               </div>
               <div class="modal-footer">
