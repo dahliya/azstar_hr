@@ -13,10 +13,31 @@ if(isset($_GET['action']))
     break;
     #
     case 'update':
-      $update = $PageEmployees->update();
       require 'templates/';
     break;
-    case 'insert_new_employee':
+    case 'new_employee':
+      $_POST = array(
+        'employeeFirstname' => 'Barak',
+        'employeeLastname' => 'Obama',
+        'employeeDOB' => '1960-12-01',
+        'employeeSSN' => '001-13-1234',
+        'employeeGender' => 'm',
+        'employeeRace' => 'Asian',
+        'emailPersonal' => 'barakobama@whitehouse.kz',
+        'emailWork' => 'barakobama@whitehouse.uz',
+        'cellphonePersonal' => '541-235-6547',
+        'street1' => '12 Washington Ave.',
+        'street2' => 'Floor 2',
+        'county' => 'Kenya County',
+        'city' => 'Washington DC',
+        'state' => 'NJ',
+        'zip' => '50279',
+        'country' => 'USA',
+        'GCExpire' => '2020-01-01',
+        'dlNumber' => 'obamadrives323',
+        'hireDate' => '2008-11-08',
+        'emergencyContact' => 'Michelle Obama @ 582-548-6548'
+      );
       $Employee = new Employee();
       echo json_encode($Employee->insert($_POST));
     break;

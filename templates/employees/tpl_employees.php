@@ -64,7 +64,7 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
         <td class= "">{{employeeSSN}}</td>
         <td class= "">{{employeeStreet}}, {{employeeCity}}, {{employeeState}}</td>
         <td class= "">{{employeeZip}}</td>
-        <td class= "">{{employeeDOB}}</td>
+        <td class= "">{{employeeDOB.conv}}</td>
       </tr>
       {{/employee}}
       </tbody>
@@ -215,7 +215,7 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
             <h4 class="modal-title" style="text-align: center">New Employee</h4>
           </div>
           <div class="modal-body">
-            <form class="form-horizontal" id="form-new-employee" name="newEmployee" method="POST" action="index.php?p=employees&action=insert_new_employee" autocomplete="off">
+            <form class="form-horizontal" id="form-new-employee" name="newEmployee" method="POST" action="index.php?p=employees&action=new_employee" autocomplete="off">
               <div class="form-group">
                 <label class="col-md-3 control-label" style="text-align:left">First Name:</label>
                 <div class="col-md-9">
@@ -244,7 +244,9 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
                 <label class="col-sm-3 control-label" for="Gender" style="text-align:left">Gender:</label>
                 <div class="col-sm-3">
                   <select class="form-control" name="employeeGender">
-                    <option></option><option>Female</option><option>Male</option>
+                    <option></option>
+                    <option value="f">Female</option>
+                    <option value="m">Male</option>
                   </select>
                 </div>
                 <label class="col-sm-2 control-label" style="text-align:left" for="race">Race:</label>
@@ -270,22 +272,6 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
                 <label class="col-sm-4 control-label" style="text-align:left">Personal Cell Phone:</label>
                 <div class="col-sm-8">
                   <input class="phone form-control" name="cellphonePersonal" type="text">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4 control-label" style="text-align:left">Work Cell Phone:</label>
-                <div class="col-sm-8">
-                  <input class="phone form-control" name="cellphoneWork" type="text">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-3 control-label" style="text-align:left">Direct Phone Number:</label>
-                <div class="col-sm-4">
-                  <input class="phone form-control" name="phoneDirectLine" type="text">
-                </div>
-                <label class="col-sm-3 control-label" style="text-align:left">Phone Ext:</label>
-                <div class="col-sm-2">
-                  <input class="form-control" name="phoneExt" type="text">
                 </div>
               </div>
               <div class="form-group">
@@ -396,7 +382,7 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
           });
         body.ready(function () {
           $(".ssn").mask("999-99-9999");
-          $(".date").mask("99/99/9999"); //ask about dates` jumping and changing
+          $(".date").mask("99/99/9999");
           $(".phone").mask("(999) 999-9999");
           $(".zipCode").mask("99999");
         });
