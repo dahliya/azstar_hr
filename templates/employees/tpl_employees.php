@@ -219,67 +219,69 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
               <div class="form-group">
                 <label class="col-md-3 control-label" style="text-align:left">First Name:</label>
                 <div class="col-md-9">
-                  <input class="form-control" name="firstName" type="text">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-3 control-label" style="text-align:left">Middle Name:</label>
-                <div class="col-sm-9">
-                  <input class="form-control" name=middleName type="text">
+                  <input class="form-control" name="employeeFirstname" type="text">
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-3 control-label" style="text-align:left">Last Name:</label>
                 <div class="col-sm-9">
-                  <input class="form-control" name="lastName" type="text">
+                  <input class="form-control" name="employeeLastname" type="text">
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-3 control-label" style="text-align:left">Birth Date:</label>
-                <div class="col-sm-3">
-                  <input class="date form-control" name="DOB" type="text">
+                <div class="col-sm-9">
+                  <input class="form-control" name="employeeDOB" type="date">
                 </div>
-                <label class="col-sm-2 control-label" style="text-align:left">SSN:</label>
-                <div class="col-sm-4">
-                  <input class="ssn form-control" name="SSN" type="text" required>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label" style="text-align:left">SSN:</label>
+                <div class="col-sm-9">
+                  <input class="ssn form-control" name="employeeSSN" type="text" required>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-3 control-label" for="Gender" style="text-align:left">Gender:</label>
                 <div class="col-sm-3">
-                  <select class="form-control" name="gender">
+                  <select class="form-control" name="employeeGender">
                     <option></option><option>Female</option><option>Male</option>
                   </select>
                 </div>
                 <label class="col-sm-2 control-label" style="text-align:left" for="race">Race:</label>
                 <div class="col-sm-4">
-                  <select class="form-control" name="race">
+                  <select class="form-control" name="employeeRace">
                     <option></option><option>Asian</option><option>Black or African American</option><option>Native Hawaiian or Other Pacific Islander</option><option>American Indian or Alaska Native</option><option>White</option>
                   </select>
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-3 control-label" style="text-align:left">Email:</label>
+                <label class="col-sm-3 control-label" style="text-align:left">Personal Email:</label>
                 <div class="col-sm-9">
-                  <input class="form-control" name="email" type="text">
+                  <input class="form-control" name="emailPersonal" type="text">
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-4 control-label" style="text-align:left">Personal cell Phone:</label>
+                <label class="col-sm-3 control-label" style="text-align:left">Work Email:</label>
+                <div class="col-sm-9">
+                  <input class="form-control" name="emailWork" type="text">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4 control-label" style="text-align:left">Personal Cell Phone:</label>
                 <div class="col-sm-8">
-                  <input class="phone form-control" name="cellPhone" type="text">
+                  <input class="phone form-control" name="cellphonePersonal" type="text">
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-4 control-label" style="text-align:left">Work Phone Number:</label>
+                <label class="col-sm-4 control-label" style="text-align:left">Work Cell Phone:</label>
                 <div class="col-sm-8">
-                  <input class="phone form-control" name="workPhone" type="text">
+                  <input class="phone form-control" name="cellphoneWork" type="text">
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-3 control-label" style="text-align:left">Phone Number:</label>
+                <label class="col-sm-3 control-label" style="text-align:left">Direct Phone Number:</label>
                 <div class="col-sm-4">
-                  <input class="phone form-control" name="phoneNumber" type="text">
+                  <input class="phone form-control" name="phoneDirectLine" type="text">
                 </div>
                 <label class="col-sm-3 control-label" style="text-align:left">Phone Ext:</label>
                 <div class="col-sm-2">
@@ -287,9 +289,21 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-3 control-label" style="text-align:left">Street Address:</label>
+                <label class="col-sm-3 control-label" style="text-align:left">Street Address 1:</label>
                 <div class="col-sm-9">
-                  <input class="form-control" name="streetAddress" type="text">
+                  <input class="form-control" name="street1" type="text">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label" style="text-align:left">Street Address 2:</label>
+                <div class="col-sm-9">
+                  <input class="form-control" name="street2" type="text">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label" style="text-align:left">County:</label>
+                <div class="col-sm-9">
+                  <input class="form-control" name="county" type="text">
                 </div>
               </div>
               <div class="form-group">
@@ -313,9 +327,21 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
                 <div class="col-sm-4">
                   <input class="form-control" name="GCExpire" type="date">
                 </div>
-                <label class="col-sm-2 control-label" style="text-align:left">DLExpire:</label>
+                <label class="col-sm-2 control-label" style="text-align:left">DLNumber:</label>
                 <div class="col-sm-4">
-                  <input class="form-control" name="DLExpire" type="date">
+                  <input class="form-control" name="dlNumber" type="text">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label" style="text-align:left">Hire Date:</label>
+                <div class="col-sm-9">
+                  <input class="form-control" name="hireDate" type="date">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label" style="text-align:left">Emergency Contact:</label>
+                <div class="col-sm-9">
+                  <input class="form-control" name="emergencyContact" type="text">
                 </div>
               </div>
               <div class="modal-footer">

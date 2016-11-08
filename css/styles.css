@@ -132,3 +132,6 @@ div .alert{
    font-weight: bold;
  }
 
+ label{
+   margin-right: -5px;
+ }
