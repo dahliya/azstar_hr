@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 07, 2016 at 07:40 PM
+-- Generation Time: Nov 08, 2016 at 04:58 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -52,8 +52,15 @@ CREATE TABLE `hr_employee_addresses` (
   `zip` varchar(45) NOT NULL,
   `country` varchar(45) NOT NULL DEFAULT 'USA',
   `datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `userId` int(10) UNSIGNED ZEROFILL NOT NULL
+  `userId` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hr_employee_addresses`
+--
+
+INSERT INTO `hr_employee_addresses` (`addressId`, `employeeId`, `street1`, `street2`, `city`, `county`, `state`, `zip`, `country`, `datetime`, `userId`) VALUES
+(2, 5, '12 Washington Ave.', 'Apt. 2', 'Washington DC', 'Kenya County', 'NJ', '50279', 'USA', '2016-11-08 15:33:35', 2001);
 
 -- --------------------------------------------------------
 
@@ -65,13 +72,13 @@ CREATE TABLE `hr_employee_info` (
   `employeeId` int(10) UNSIGNED NOT NULL,
   `employeeFirstname` varchar(45) NOT NULL,
   `employeeLastname` varchar(45) NOT NULL,
-  `employeeSSN` varchar(11) NOT NULL,
+  `employeeSSN` varchar(11) DEFAULT NULL,
   `employeeDOB` date NOT NULL,
   `employeeRace` varchar(45) DEFAULT NULL,
   `employeeGender` char(1) DEFAULT NULL,
-  `cellphonePersonal` char(8) NOT NULL,
-  `cellphoneWork` char(8) DEFAULT NULL,
-  `phoneDirectLine` char(8) DEFAULT NULL,
+  `cellphonePersonal` char(12) NOT NULL,
+  `cellphoneWork` char(12) DEFAULT NULL,
+  `phoneDirectLine` char(12) DEFAULT NULL,
   `phoneExt` char(4) DEFAULT NULL,
   `GCExpire` date DEFAULT NULL,
   `emailPersonal` varchar(100) NOT NULL,
@@ -82,6 +89,13 @@ CREATE TABLE `hr_employee_info` (
   `dlNumber` varchar(45) DEFAULT NULL,
   `tb_userId` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hr_employee_info`
+--
+
+INSERT INTO `hr_employee_info` (`employeeId`, `employeeFirstname`, `employeeLastname`, `employeeSSN`, `employeeDOB`, `employeeRace`, `employeeGender`, `cellphonePersonal`, `cellphoneWork`, `phoneDirectLine`, `phoneExt`, `GCExpire`, `emailPersonal`, `emailWork`, `hireDate`, `positionId`, `emergencyContact`, `dlNumber`, `tb_userId`) VALUES
+(5, 'Barak', 'Obama', '001-13-1234', '1960-12-01', 'Asian', 'm', '541-235-6547', NULL, NULL, NULL, '2020-01-01', 'barakobama@whitehouse.kz', 'barakobama@whitehouse.uz', '2008-11-08', NULL, 'Michelle Obama @ 582-548-6548', 'obamadrives323', NULL);
 
 -- --------------------------------------------------------
 
@@ -237,7 +251,7 @@ CREATE TABLE `hr_sessions` (
 --
 
 INSERT INTO `hr_sessions` (`sessionId`, `userId`, `userFullName`, `sessionStartDatetime`, `sessionEndDatetime`, `sessionData`, `lastAccessed`) VALUES
-('rihg4prjsqmu01o80d963523d3', 2001, ' ', NULL, NULL, 'User|O:4:"User":8:{s:9:"\0*\0userId";s:4:"2001";s:16:"\0*\0userFirstName";N;s:15:"\0*\0userLastName";N;s:15:"\0*\0userPassword";s:128:"3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2";s:12:"\0*\0userEmail";s:1:"d";s:12:"\0*\0userPhone";N;s:13:"userFirstname";s:4:"Dima";s:12:"userLastname";s:1:"K";}', '2016-11-07 18:37:29');
+('rihg4prjsqmu01o80d963523d3', 2001, ' ', NULL, NULL, 'User|O:4:"User":8:{s:9:"\0*\0userId";s:4:"2001";s:16:"\0*\0userFirstName";N;s:15:"\0*\0userLastName";N;s:15:"\0*\0userPassword";s:128:"3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2";s:12:"\0*\0userEmail";s:1:"d";s:12:"\0*\0userPhone";N;s:13:"userFirstname";s:4:"Dima";s:12:"userLastname";s:1:"K";}', '2016-11-08 15:55:28');
 
 -- --------------------------------------------------------
 
@@ -543,7 +557,12 @@ ALTER TABLE `hr_comments`
 -- AUTO_INCREMENT for table `hr_employee_addresses`
 --
 ALTER TABLE `hr_employee_addresses`
-  MODIFY `addressId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `addressId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `hr_employee_info`
+--
+ALTER TABLE `hr_employee_info`
+  MODIFY `employeeId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `hr_employee_item_log`
 --
