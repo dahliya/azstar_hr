@@ -4,7 +4,7 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
 ?>
 
 <html>
-<head>
+  <head>
 
   <title>Employees</title>
   <meta charset="UTF-8">
@@ -19,7 +19,7 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
   <script type="text/javascript" src="javascript/ajax.form.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-</head>
+  </head>
 
 <body>
 
