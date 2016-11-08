@@ -9,7 +9,7 @@ function get_link()
 {
   try
   {
-    $link = new PDO('mysql:dbname=atl_hr;host=127.0.0.1', 'root', '');
+    $link = new PDO('mysql:dbname=atl_hr;host=127.0.0.1', 'azstar_hr_user', 'asdf');
     $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   }
   catch (PDOException $e)

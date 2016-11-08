@@ -1,7 +1,6 @@
 <?php
 //Checking for Secret key.
 if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
-
 ?>
 
 <html>

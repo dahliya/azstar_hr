@@ -59,8 +59,7 @@ class Employee
   //--------
   public function insert($data = array())
   {
-    ////
-    ///
+    global $link;
     $result = array(
       'status' => 'OK',
       'message' => '<strong>Success!</strong> New record was created.'
