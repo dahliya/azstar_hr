@@ -38,22 +38,7 @@ if (isset($_SESSION['User']) && $_SESSION['User']->get_userId() && is_numeric($_
     case 'inventory':
       require 'inventory.php';
       break;
-    case 'complaints':
-      require 'complaints.php';
-      break;
-    case 'violations':
-      require 'violations.php';
-      break;
     // need to be edited
-    case 'pic_one':
-      require 'templates/tpl_document_viewer.php';
-      break;
-    case 'pic_2':
-      require 'templates/tpl_document_viewer_2.php';
-      break;
-    case 'new_employee';
-      require 'templates/tpl_new_employee.php';
-      break;
     default:
       require 'employees.php';
   }

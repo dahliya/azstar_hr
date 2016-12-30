@@ -49,7 +49,7 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
 
 <!--list template begins-->
 <script type="text/x-handlebars-template" id="list-inventory">
-  <table id="list-items" class="table table-striped table-hover">
+  <table id="list-items" class="table table-striped table-hover table-responsive">
     <thead>
     <th class= "">Description:</th>
     <th class= "">Make:</th>
@@ -81,10 +81,10 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
     <li><a data-toggle="tab" href="#tab-inventory">Inventory</a></li>
   </ul>
 
-  <div class="tab-content"> <!-- Inventory item profile  Add class responsive, so that the table wont move as the screen size changes-->
+  <div class="tab-content"> <!-- Inventory item profile-->
     <div id="tab-profile" class="tab-pane fade in active">
       <form id="form-generalTab-form" action="index.php?p=inventory&action=update" method="post" data-itemId="{{itemId}}">
-        <table id="table-general-table" class="table table-hover table-">
+        <table id="table-general-table" class="table table-hover">
           {{#item}}
           <thead>
           <th class="text-left">{{itemMake}} {{itemModel}}</th>
@@ -157,9 +157,9 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
     </div>
   </div>
 </script>
-<!--form for new inventoryItem--> <!-- add so that modal remains open even when clicked outside. data- backdrop = 'static'-->
+<!--form for new inventoryItem-->
 <div class="container">
-  <div class="modal fade" data-backdrop="static" id="itemModal" role="dialog">
+  <div class="modal fade" id="itemModal" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -225,168 +225,85 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
 
 <script type="text/javascript">
 
-(function () {
+  var itemId;
+  var newItemForm = $("#form-new-item");
+  var body = $("body");
+  var alert = $("#alert");
 
-  var InventoriesList;
-  InventoriesList = {
-    init: function (config) {
-      this.template = config.template;
-      this.container = config.container;
-      this.url = 'index.php?p=inventory&action=get_list';
+    $.ajax({
+      url: "index.php?p=inventory&action=get_list",
+      data: {
+      },
+      type: 'GET',
+      dataType:'JSON',
+      success: function(data) {
+        //list template begins
 
-      this.fetch();
-    },
-
-    attachTemplate: function(){
-      var template = Handlebars.compile(this.template);
-      this.container.append(template({item: this.object}));
-      $(document).trigger('listReady');
-    },
-
-    fetch: function () {
-
-      var self = this;
-      $.getJSON(this.url, function (data) {
-        console.log(data);
-        self.object = $.map(data, function (object) {
-          return {
-            itemDescription: object.itemDescription,
-            itemMake: object.itemMake,
-            itemModel: object.itemModel,
-            itemId: object.itemId,
-            inventoryTypeId: object.inventoryTypeId,
-            itemSN: object.itemSN,
-            itemPieceCount: object.itemPieceCount,
-            itemPurchaseDate: object.itemPurchaseDate
-          };
-        });
-        self.attachTemplate();
-      });
-    }
-  };
-
-  InventoriesList.init({
-    template: $('#list-inventory').html(),
-    container: $('#list_template')
-  });
-
-  // Inventory Profile
-  $(document).on('listReady', function() {
-    $("tr.clickable-row").click(function () {
-      itemId = $(this).attr('data-itemId');
-      var inventoryItem;
-      var inventoryItem = {
-        init: function (config) {
-          this.template = config.template;
-          this.container = config.container;
-          this.url = 'index.php?p=inventory&action=get_list';
-
-          this.fetch();
-        },
-
-        attachTemplate: function () {
-          var self =this;
-          $.each(self.object,function (key, value) {
-            if (value['itemId'] == itemId){
-              var template = Handlebars.compile(self.template);
-              self.container.empty();
-              self.container.append(template({item:value}));
-            }
-          });
-          $(document).trigger('profileReady');
-        },
-
-        fetch: function () {
-
-          var self =this;
-          $.getJSON(this.url,function (data) {
-            self.object = $.map(data,function (object) {
-              return{
-                itemDescription: object.itemDescription,
-                itemMake: object.itemMake,
-                itemModel: object.itemModel,
-                itemId: object.itemId,
-                inventoryTypeId: object.inventoryTypeId,
-                itemSN: object.itemSN,
-                itemPieceCount: object.itemPieceCount,
-                itemPurchaseDate: object.itemPurchaseDate
-              };
+        var list_template = $("#list-inventory").html();
+        var list_renderer = Handlebars.compile(list_template);
+        var list_result = list_renderer({item: data});
+        var list = $("#list_template").html(list_result);
+        //end of list template
+        //profile template begins
+        if (list) {
+          $("tr.clickable-row").click(function () {
+            event.preventDefault();
+            itemId = $(this).attr('data-itemId');
+            $.each(data, function (key, value) {
+              if (value['itemId'] == itemId) {
+                var table_template = $("#item_profile").html();
+                var table_renderer = Handlebars.compile(table_template);
+                var table_result = table_renderer({item: value});
+                var profile = $("#container-profile").html(table_result);
+              }
             });
-            self.attachTemplate();
           });
-        }
-      };
-
-      inventoryItem.init({
-        template: $('#item_profile').html(),
-        container: $('#container-profile')
-      });
-
+        }//end of profile template
+      }
     });
-  });
 
-})();
-
-var itemId;
-var newItemForm = $("#form-new-item");
-var body = $("body");
-var alert = $("alert");
-
-$(document).on('profileReady',function () {
-  //update tr
-  $("#table-general-table tr").click(function () {
+  //update a tr in the item profile
+  body.on('click','#table-general-table tr',function(){
     var table = $("#table-general-table");
     var clickedTD = $(this);
     var span = clickedTD.find('span');
-    var input = clickedTD.find('input','select');
-    var select = clickedTD.find('select');
+    var contents = span.text();
+    var input = clickedTD.find('input');
     var inputType = input.attr('data-type');
-    var button = $("<input type = 'submit' class = 'button form'>").val(" Save ");
+    var button = $("<input type='submit' class='button form'>").val(" Save ");
     //
     table.find('input[value="Save"]').add('input[type=submit]').remove();
     table.find('input,select').attr('type','hidden').css('display','none');
     table.find(".inputContainer").children("span").css('display','inline');
     input.css('display','inline').attr('type',inputType);
-    select.css('display','inline').attr('type',inputType);
-    span.css('display', 'none');
+    span.css('display','none');
     input.after(button);
-    select.after(button);
     //
   });
 
-  //input click
-  $('input').on('click',function (e) {
+  //Input click
+  body.on('click', 'input', function(e){
     e.stopPropagation();
   });
-
-  //input mask for new employees
-  body.ready(function () {
-    $(".ssn").mask("999-99-9999");
-    $(".date").mask("99/99/9999");
-    $(".phone").mask("(999) 999-9999");
-    $(".zipCode").mask("99999");
-  });
-
-  //submit a new item
+  //submit a new employee
   newItemForm.ajaxForm({
     dataType: 'JSON',
-    success: function (data) {
+    success: function(data){
       var status = data.status;
       var message = data.message;
       if(status=='OK'){
         newItemForm.resetForm();
         alert.html(message).show().addClass('alert alert-success');
-        newItemForm.on('click','input', function () {
+        newItemForm.on('click','input',function () {
           alert.fadeOut("fast");
         })
       }
       else{
-        //alert failure
+        //alert.failure
       }
     }
   });
 
-});
 
 
 </script>

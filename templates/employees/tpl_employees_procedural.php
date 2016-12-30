@@ -60,11 +60,11 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
       <tbody>
       {{#employee}}
       <tr class="clickable-row" data-href="index.php?p=employees&action=get_profile" data-employeeId = "{{employeeId}}">
-        <td class= "">{{employeeFirstname }} {{employeeLastname}}</td>
+        <td class= "">{{employeeName }} {{employeeLastname}}</td>
         <td class= "">{{employeeSSN}}</td>
-        <td class= "">{{street1}}, {{street2}}, {{city}}, {{state}}</td>
-        <td class= "">{{zip}}</td>
-        <td class= "">{{employeeDOB.conv}}</td>
+        <td class= "">{{employeeStreet}}, {{employeeCity}}, {{employeeState}}</td>
+        <td class= "">{{employeeZip}}</td>
+        <td class= "">{{employeeDOB}}</td>
       </tr>
       {{/employee}}
       </tbody>
@@ -80,20 +80,20 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
       <li><a data-toggle="tab" href="#tab-inventory">Inventory</a></li>
     </ul>
 
-    <div class="tab-content"> <!-- employee profile updatable. Add class responsive, so that the table wont move as the screen size changes-->
+    <div class="tab-content"> <!-- employee profile updatable-->
       <div id="tab-profile" class="tab-pane fade in active">
         <form id="form-generalTab-form" action="index.php?p=employees&action=update" method="post" data-employeeId="{{employeeId}}">
-          <table id="table-general-table" class="table table-hover table-responsive">
+          <table id="table-general-table" class="table table-hover">
             {{#employee}}
             <thead>
-            <th>{{employeeFirstname }} {{employeeLastname}}</th>
+            <th>{{employeeName }} {{employeeLastname}}</th>
             </thead>
             <tbody>
             <tr>
               <td>Birth Date:</td>
               <td class= "inputContainer">
-                <span>{{employeeDOB.conv}}</span>
-                <input type="hidden" name="employeeDOB" data-type="date" value="{{employeeDOB.conv}}">
+                <span>{{employeeDOB}}</span>
+                <input type="hidden" name="employeeDOB" data-type="date" value="{{employeeDOB}}">
               </td>
             </tr>
             <tr>
@@ -135,63 +135,63 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
               <td>Personal Cell Phone:</td>
               <td class= "inputContainer">
                 <span>{{cellphonePersonal}}</span>
-                <input class="phone" type="hidden" name="cellphonePersonal" data-type="text" value="{{cellphonePersonal}}">
+                <input class="phone" type="hidden" name="cellphonePersonal" value="{{cellphonePersonal}}">
               </td>
             </tr>
             <tr>
               <td>Work Cell Phone:</td>
               <td class= "inputContainer">
                 <span>{{cellphoneWork}}</span>
-                <input class="phone" type="hidden" name="cellphoneWork" data-type="text" value="{{cellphoneWork}}">
+                <input class="phone" type="hidden" name="cellphoneWork" value="{{cellphoneWork}}">
               </td>
             </tr>
             <tr>
               <td>Phone Direct Line:</td>
               <td class= "inputContainer">
                 <span>{{phoneDirectLine}}</span>
-                <input class="phone" type="hidden" name="phoneDirectLine" data-type="text" value="{{phoneDirectLine}}">
+                <input class="phone" type="hidden" name="phoneDirectLine" value="{{phoneDirectLine}}">
               </td>
             </tr>
             <tr>
               <td>Phone Ext:</td>
               <td class= "inputContainer">
                 <span>{{phoneExt}}</span>
-                <input type="hidden" name="phoneExt" data-type="text" value="{{phoneExt}}">
+                <input type="hidden" name="phoneExt" value="{{phoneExt}}">
               </td>
             </tr>
             <tr>
               <td>Street address 1:</td>
               <td class= "inputContainer">
                 <span>{{street1}}</span>
-                <input type="hidden" name="street1" data-type="text" value="{{street1}}">
+                <input type="hidden" name="street1" value="{{street1}}">
               </td>
             </tr>
             <tr>
               <td>Street address 2:</td>
               <td class= "inputContainer">
                 <span>{{street2}}</span>
-                <input type="hidden" name="street2" data-type="text" value="{{street2}}">
+                <input type="hidden" name="street2" value="{{street2}}">
               </td>
             </tr>
             <tr>
               <td>County:</td>
               <td class= "inputContainer">
                 <span>{{county}}</span>
-                <input type="hidden" name="county" data-type="text" value="{{county}}">
+                <input type="hidden" name="county" value="{{county}}">
               </td>
             </tr>
             <tr>
               <td>City:</td>
               <td class= "inputContainer">
-                <span>{{city}}</span>
-                <input type="hidden" name="city" data-type="text" value="{{city}}">
+                <span>{{employeeCity}}</span>
+                <input type="hidden" name="city" data-type="text" value="{{employeeCity}}">
               </td>
             </tr>
             <tr>
               <td>State:</td>
               <td class= "inputContainer">
-                <span>{{state}}</span>
-                <select name="state" hidden value="{{state}}">
+                <span>{{employeeState}}</span>
+                <select name="state" hidden value="{{employeeState}}">
                   <option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District Of Columbia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option>
                 </select>
               </td>
@@ -199,8 +199,8 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
             <tr>
               <td>Zip Code:</td>
               <td class= "inputContainer">
-                <span>{{zip}}</span>
-                <input class="zipCode" type="hidden" name="zip" data-type="text" value="{{zip}}">
+                <span>{{employeeZip}}</span>
+                <input class="zipCode" type="hidden" name="zip" data-type="text" value="{{employeeZip}}">
               </td>
             </tr>
             <tr>
@@ -261,11 +261,10 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
   </script>
   <!--new employee-->
   <div class="container" >
-    <div id="employeeModal" class="modal fade" data-backdrop="static" role="dialog"> <!-- add so that modal remains open even when clicked outside. data- backdrop = 'static'-->
+    <div id="employeeModal" class="modal fade" role="dialog">
       <div class="modal-dialog" >
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title" style="text-align: center">New Employee</h4>
           </div>
           <div class="modal-body">
@@ -345,14 +344,14 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-4 control-label" style="text-align:left">Street Address 1:</label>
-                <div class="col-sm-8">
+                <label class="col-sm-3 control-label" style="text-align:left">Street Address 1:</label>
+                <div class="col-sm-9">
                   <input class="form-control" name="street1" type="text">
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-4 control-label" style="text-align:left">Street Address 2:</label>
-                <div class="col-sm-8">
+                <label class="col-sm-3 control-label" style="text-align:left">Street Address 2:</label>
+                <div class="col-sm-9">
                   <input class="form-control" name="street2" type="text">
                 </div>
               </div>
@@ -423,152 +422,55 @@ if (!isset($secretKey) || $secretKey !== 'jhbrfpbv') {exit();}
 
 <script type="text/javascript">
 
-(function () {
-  var EmployeesList;
-  EmployeesList = {
-    init: function (config) {
-      this.template = config.template;
-      this.container = config.container;
-      this.url = 'index.php?p=employees&action=get_list';
+  var employeeId;
+  var profile;
+  var newEmployeeForm = $("#form-new-employee");
+  var body = $("body");
+  var alert = $("#alert");
 
-      this.fetch();
-    },
-
-    attachTemplate: function(){
-     var template = Handlebars.compile(this.template);
-     this.container.append(template({employee: this.object}));
-     $(document).trigger('trReady');
-    },
-
-    fetch: function () {
-
-      var self = this;
-      $.getJSON(this.url, function (data) {
-         self.object = $.map(data, function (object) {
-            return {
-              employeeId: object.employeeId,
-              employeeFirstname: object.employeeFirstname,
-              employeeLastname: object.employeeLastname,
-              employeeSSN: object.employeeSSN,
-              street1: object.street1,
-              street2: object.street2,
-              city: object.city,
-              state: object.state,
-              zip: object.zip,
-              employeeDOB: object.employeeDOB,
-              employeeRace: object.employeeRace,
-              employeeGender: object.employeeGender,
-              cellphonePersonal: object.cellphonePersonal,
-              cellphoneWork: object.cellphoneWork,
-              phoneDirectLine: object.phoneDirectLine,
-              phoneExt: object.phoneExt,
-              GCExpire: object.GCExpire,
-              emailPersonal: object.emailPersonal,
-              emailWork: object.emailWork,
-              county: object.county,
-              dlNumber: object.dlNumber,
-              hireDate: object.hireDate,
-              positionId: object.positionId,
-              emergencyContact: object.emergencyContact
-            };
-         });
-        self.attachTemplate();
-      });
-    }//
-  };
-
-  EmployeesList.init({
-    template: $('#list').html(),
-    container: $('#list_template')
-  });
-
-  // profile
-  $(document).on('trReady', function() {
-
-    $("tr.clickable-row").click(function () {
-      employeeId = $(this).attr('data-employeeId');
-      var EmployeesProfile;
-      EmployeesProfile = {
-        init: function (config) {
-          this.template = config.template;
-          this.container = config.container;
-          this.url = 'index.php?p=employees&action=get_list';
-
-          this.fetch();
-        },
-
-        attachTemplate: function () {
-          var self = this;
-          $.each(self.object, function (key, value) {
+  // list of employees
+  $.ajax({
+    url: "index.php?p=employees&action=get_list",
+    data: {},
+    type: 'GET',
+    dataType: 'JSON',
+    success: function(data) {
+      //list template begins
+      var list_template = $("#list").html();
+      var list_renderer = Handlebars.compile(list_template);
+      var list_result = list_renderer({employee: data});
+      var list = $("#list_template").html(list_result);
+      //end of list template
+      //profile template begins
+      if (list) {
+        $("tr.clickable-row").click(function () {
+          event.preventDefault();
+          employeeId = $(this).attr('data-employeeId');
+          $.each(data, function (key, value) {
             if (value['employeeId'] == employeeId) {
-              var template = Handlebars.compile(self.template);
-              self.container.empty();
-              self.container.append(template({employee: value}));
+              var table_template = $("#employee_profile").html();
+              var table_renderer = Handlebars.compile(table_template);
+              var table_result = table_renderer({employee: value});
+              var profile = $("#container-profile").html(table_result);
             }
           });
-          $(document).trigger('profileReady');
-        },
-
-        fetch: function () {
-
-          var self = this;
-          $.getJSON(this.url, function (data) {
-            self.object = $.map(data, function (object) {
-              return {
-                employeeId: object.employeeId,
-                employeeFirstname: object.employeeFirstname,
-                employeeLastname: object.employeeLastname,
-                employeeSSN: object.employeeSSN,
-                street1: object.street1,
-                street2: object.street2,
-                city: object.city,
-                state: object.state,
-                zip: object.zip,
-                employeeDOB: object.employeeDOB,
-                employeeRace: object.employeeRace,
-                employeeGender: object.employeeGender,
-                cellphonePersonal: object.cellphonePersonal,
-                cellphoneWork: object.cellphoneWork,
-                phoneDirectLine: object.phoneDirectLine,
-                phoneExt: object.phoneExt,
-                GCExpire: object.GCExpire,
-                emailPersonal: object.emailPersonal,
-                emailWork: object.emailWork,
-                county: object.county,
-                dlNumber: object.dlNumber,
-                hireDate: object.hireDate,
-                positionId: object.positionId,
-                emergencyContact: object.emergencyContact
-              };
-            });
-            self.attachTemplate();
-          });
-        }
-      };
-
-      EmployeesProfile.init({
-        template: $('#employee_profile').html(),
-        container: $('#container-profile')
-      });
-
-    });
+        body.ready(function () {
+          $(".ssn").mask("999-99-9999");
+          $(".date").mask("99/99/9999");
+          $(".phone").mask("(999) 999-9999");
+          $(".zipCode").mask("99999");
+        });
+        });
+      }//end of profile template
+    }
   });
 
-})();
-
-var employeeId;
-var newEmployeeForm = $("#form-new-employee");
-var body = $("body");
-var alert = $("#alert");
-
-$(document).on('profileReady', function() {
-
   //update a tr in the employee profile
-  $("#table-general-table tr").click(function(){
-    console.log('table clicked');
+  body.on('click','#table-general-table tr',function(){
     var table = $("#table-general-table");
     var clickedTD = $(this);
     var span = clickedTD.find('span');
+    var contents = span.text();
     var input = clickedTD.find('input','select');
     var select = clickedTD.find('select');
     var inputType = input.attr('data-type');
@@ -586,14 +488,13 @@ $(document).on('profileReady', function() {
   });
 
   //Input click
-  $('input').on('click', function(e){
+  body.on('click', 'input', function(e){
     e.stopPropagation();
   });
-
   //input mask for new employee
   body.ready(function(){
     $(".ssn").mask("999-99-9999");
-    $(".date").mask("99/99/9999");
+    $(".date").mask("99/99/9999"); //ask about dates` jumping and changing
     $(".phone").mask("(999) 999-9999");
     $(".zipCode").mask("99999");
   });
@@ -616,10 +517,6 @@ $(document).on('profileReady', function() {
       }
     }
   });
-
-});
-//
-
 
 
 

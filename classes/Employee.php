@@ -3,10 +3,11 @@ class Employee
 {
 
   public $employeeId = NULL;
-  public $employeeName = NULL;
+  public $employeeFirstname = NULL;
   public $employeeLastname = NULL;
   public $employeeSSN = NULL;
   public $street1 = NULL;
+  public $street2 = NULL;
   public $city = NULL;
   public $state = NULL;
   public $zip = NULL;
@@ -29,7 +30,6 @@ class Employee
   public $supervisorId = NULL;
   public $tb_userId = NULL;
 
-
 //---------------------------------------------------------
   public function __construct($employeeId = NULL)
   {
@@ -37,7 +37,7 @@ class Employee
     {
       global $link;
       $q = "SELECT * FROM hr_employee_info
-            JOIN hr_employee_addresses 
+            LEFT JOIN hr_employee_addresses 
               ON hr_employee_info.employeeId = hr_employee_addresses.employeeId
               AND hr_employee_addresses.addressId = (SELECT MAX(addressId) FROM hr_employee_addresses 
                 WHERE employeeId = :employeeId)
